@@ -17,16 +17,32 @@
     --border:.1rem solid rgba(0,0,0,.1);
     --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
 }
-@mixin grid($val){
+ /* grid($val){
     display: grid;
 grid-template-columns:repeat(auto-fit,minmax($val,1fr));
 gap: 1.5rem;
-}
+} */
 
 html{
     font-size: 62.5%;
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+section{
+    padding:3rem 9% ;
+}
+.btn{
+    margin-top:  1rem;
+    display: inline-block;
+    padding: .8rem 3rem ;
+    background: var(--green);
+    color: var(--white);
+    font-size: 1.7rem;
+    cursor: pointer;
+
+    &:hover{
+        background:var(--black);
+    }
 }
 .header{
 position: fixed;
@@ -107,21 +123,27 @@ label:hover{
 
 .shopping-cart{
     position: absolute;
-    top: 115%; right: 2rem;
+    top: 115%; right: -105%;
     background: var(--white);
     border-radius:  .5rem;
     box-shadow: var(--box-shadow);
     width: 35rem;
     padding:  2rem;
 
- .box{
+    &.active{
+        right: 2rem;
+        transition:  .4s linear;
+    }
+}
+/* .shopping-cart .box{
     display: flex;
     align-items: center;
     gap: 1.5rem;
     margin-bottom: 1.5rem;
     position: inherit;
-}
-.fa-times{
+} */
+
+.shopping-cart .fa-times{
     position: absolute;
     top: 50%;
     right: 2rem;
@@ -134,7 +156,372 @@ label:hover{
     }
 
 }
+.shopping-cart .box img{
+    height: 10rem;
 }
+.shopping-cart .box .content h3{
+    font-size: 1.7rem;
+    padding-bottom:  .5rem;
+    color: var(--black);
+}
+.shopping-cart .box .content span{
+    font-size: 1.5rem;
+    color: var(--light-color);
+    
+    &.multiply{
+        margin: 0 .5rem;
+    }
+}
+
+.shopping-cart  .total{
+    color: var(--light-color);
+    text-align: center;
+    font-size:  2.2rem;
+
+    span{
+        color: var(--black);
+    }
+}
+
+.shopping-cart .btn{
+    text-align: center;
+    width: 100%;
+}
+.header .login-form{
+    position: absolute;
+    top: 115%; right: -105%;
+    background: var(--white);
+    border-radius:  .5rem;
+    box-shadow: var(--box-shadow);
+    width: 35rem;
+    padding:  2rem;
+
+    &.active{
+        right: 2rem;
+        transition: .4s linear;
+    }
+
+}
+
+    .header .login-form h3{
+        color: var(--black);
+        text-transform: uppercase;
+        font-size: 2.2rem;
+        text-align: center;
+        margin-bottom: .7rem;
+    }
+
+
+    .header .login-form .box{
+        margin: .7rem 0;
+         border: var(--border);
+         padding: 1rem  1.2rem;
+         font-size:1.5rem ;
+         color: var(--black);
+         text-transform: none;
+         width: 100%;
+    }
+
+     .header .login-form .remember{
+       
+        display: flex;
+  /* align-items: center; */
+  gap: .5rem;
+  margin: .7rem 0;
+    }
+
+        .header .login-form .remember label{
+            font-size: 1.5rem;
+            color: var(--light-color);
+            cursor: pointer;
+        }
+     .login-form .btn{
+        margin: 1rem 0;
+        width: 100%;
+        text-align: center;
+     }
+
+     .login-form p{
+        color: var(--light-color);
+        padding-top: .7rem;
+        font-size: 1.4rem;}
+
+        .login-form p a{
+            columns: var(--green);}
+
+            .login-form p a:hover{
+                text-decoration: underline;
+            }
+        
+     
 #menu-btn{
     display: none;
+}
+
+@keyframes fadeRight{
+100%{
+   
+    transform: translateX(-5rem);
+   
+    opacity: 0;
+}
+}
+
+
+@keyframes fadeUp{
+    0%{
+       
+        transform: scale(.5);
+        opacity: 0;
+    }
+    }
+
+.home{
+    padding-top: 14rem;
+    background: url(/image/home.jpg ) no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.home .slides-container .slide{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    display: none;
+    
+
+    &.active{
+        display: flex;
+    }
+}
+.home .slides-container .slide .content{
+    flex:1 1 40rem;
+    animation: fadeRight .4s linear .4s backwards;
+}
+
+    .home .slides-container .slide .content span{
+        color: var(--light-color);
+        font-size: 2.5rem;
+    }
+    .home .slides-container .slide .content h3{
+        font-size:6rem ;
+        color: var(--black);
+        padding: .5rem 0;
+
+    }
+
+    .home .slides-container  .slide .image{
+flex: 1 1 40rem;
+margin: 3rem 0;
+
+}
+
+.home .slides-container  .slide .image img{
+    width: 100%;
+    animation: fadeUp .4s linear;
+   
+}
+
+#next-slide, #prev-slide{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    background: var(--white);
+    font-size:3rem ;
+    color: var(--black);
+    cursor: pointer;}
+    #next-slide,
+     #prev-slide:hover{
+        background: var(--green);
+        color: var(--white);
+    }
+
+
+#prev-slide{
+    left: 2rem;
+
+}
+#next-slide{
+    right: 2rem;
+}
+
+.banner-container{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(32rem,1fr));
+    gap: 1.5rem;
+    /* z-index: 1000; */
+}
+.banner-container .banner{
+    position: relative;
+    height: 25rem;
+    overflow: hidden;
+
+    &:hover img{
+transform:scale(1.2) ;
+    }
+}
+.banner-container .banner img{
+    height: 100%;;
+    width: 100%;
+    object-fit: cover;
+}
+.banner-container .banner .content{
+    position: absolute;
+    top: 50%; left: 2rem;
+    transform: translateY(-50%);
+}
+.banner-container .banner .content span{
+    color: var(--light-color);
+    font-size: 1.5rem;
+}
+.banner-container .banner .content h3{
+    font-size: 2rem;
+    padding-top: .5rem;
+    color: var(--black);
+}
+.banner-container .banner .content a .btn{
+padding:.8rem 2.5rem ;
+}
+/* .space{
+    min-height: 50vh;
+} */
+
+.footer{
+    background: var(--light-bg);
+
+}
+.footer .box-container{
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(25rem,1fr));
+    gap:1.5rem;
+}
+
+.footer .box-container .box h3{
+    font-size: 1.5rem;
+    color: var(--black);
+    padding: 1rem 0;
+
+}
+.footer .box-container .box p{
+    font-size: 1.5rem;
+    color: var(--light-color);
+    padding-bottom: .5rem;
+
+}
+.footer .box-container .box a{
+    font-size: 1.4rem;
+    color: var(--light-color);
+    padding: 1rem 0;
+    display: block;
+    &:hover{
+        color: var(--green);
+    }
+
+}
+.footer .box-container .box a i{
+padding-right: .5rem;
+color: var(--green);
+}
+
+.footer .box-container .box form input[type="email"]{
+    width: 100%;
+    padding: 1rem 1.2rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    margin: 1rem 0;
+    text-transform: none;
+}
+.footer .box-container .box .payment{
+width: 100%;
+margin-top: 2rem;    
+
+}
+.credit{
+    text-align: center;
+    background: var(--green);
+    font-size: 2rem;
+    color: var(--white);
+}
+
+@media(max-width:991px){
+    html{
+        font-size:  55%;
+    }
+    .header{
+        padding:  2rem;
+    }
+    section{
+        padding:3rem 2rem;
+    }
+.home #next-slide,
+.home #prev-slide{
+    transform: translateY(0);
+    top:88%;
+}
+.home #prev-slide{
+    left:auto;
+    right: 8rem;
+
+}
+}
+
+@media(max-width:768px){
+  #menu-btn{
+    display: inline-block;
+  }
+
+  .header .search-form{
+width: 100%;
+right: 0;
+border-radius: 0;
+  }
+  .header .search-form .active{
+    top: 99%;
+    border-top: var(--border);
+    border-bottom: var(--border);
+  }
+    .header .navbar{
+        position: absolute;
+        top: 99%; left: 0; right: 0;
+        background: var(--white);
+        border-top: var(--border);
+        border-bottom: var(--border);
+        clip-path: polygon(0 0,100% 0,100% 0,0 0);
+
+
+    &.active{
+           
+            clip-path: polygon(0 0,100% 0,100% 100%,0% 100%);
+        }
+    
+    }
+        .header .navbar  a{
+            margin: 1.5rem;
+            padding:  1.5rem;
+            background: var(--light-bg);
+            font-size:  2rem;
+            display: block;
+            border-radius:  .5rem;
+        }
+
+}
+  
+
+@media(max-width:450px){
+    html{
+        font-size:  50%;
+    }
+    .header{
+        padding:  2rem;
+    }
+    .home .slides-container .slide .content h3{
+        font-size:  5rem;
+    }
 }
