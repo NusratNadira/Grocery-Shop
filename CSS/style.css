@@ -138,3 +138,69 @@ label:hover{
 #menu-btn{
     display: none;
 }
+
+
+
+
+.blogs .box-container{
+
+@include grid(30 rem);
+.box{
+    border:$border;
+    &:hover .image img{
+        transform: scale(1.2);
+    }
+    .image{
+        height:25 rem;
+        width:100%;
+        overflow: hidden;
+    }
+    img{
+         height:100%;
+         widtth:100%;
+         object-fit: cover;
+    }
+
+}
+.content{
+    padding : 2 rem 1.5 rem;
+    
+    .icons{
+        border-bottom:$ border;
+        padding-bottom: 1.7 rem;
+        margin-bottom: 1.7 rem;
+        display: flex;
+        align-item:center;
+        justify-content: space-between;
+
+
+        a{
+            font-size:1.4 rem;
+            color:$light-color;
+            &:hover{
+                color:$green;
+            }
+            i{
+                color:$green;
+                padding-right:.5 rem;
+
+            }
+
+        }
+
+
+
+    }
+    h3{
+        font-size:2.2 rem ;
+        color:&black;
+    }
+    p{
+        font-size:1.4 rem ;
+        color:$light-color;
+        line-height:2;
+        padding: 1 rem 0;
+    }
+
+}
+} 
